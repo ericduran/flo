@@ -43,8 +43,8 @@ class Command extends \Symfony\Component\Console\Command\Command {
   /**
    * @return Github\Client
    */
-  public function getGithub($cache = TRUE, $api = NULL) {
-    if (null === $this->github) {
+  public function getGithub($cache = TRUE, $api = NULL, $reset = TRUE) {
+    if ($this->github === NULL || $reset === TRUE) {
       if ($cache) {
         $this->github = new Github\Client(
           new Github\HttpClient\CachedHttpClient(array('cache_dir' => '/tmp/github-api-cache'))
