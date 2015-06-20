@@ -9,7 +9,7 @@
   stopOnFailure="false"
   syntaxCheck="false"
   bootstrap="tests/bootstrap.php">
-<testsuites>
+ <testsuites>
   <testsuite name="Pub Test Suite">
     <directory>./tests/flo/</directory>
   </testsuite>

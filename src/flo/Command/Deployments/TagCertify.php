@@ -30,7 +30,7 @@ class TagCertify extends Command {
     $GitHub = $this->getGithub(FALSE, 'repo');
 
     try {
-      $release = $GitHub->releases()->showTag(
+      $release = $GitHub->releases()->tag(
         $this->getConfigParameter('organization'),
         $this->getConfigParameter('repository'),
         $tag

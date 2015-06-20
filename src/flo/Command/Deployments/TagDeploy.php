@@ -35,7 +35,7 @@ class TagDeploy extends Command {
 
     if (!$input->getOption('pre-release')) {
       try {
-        $release = $GitHub->api('repo')->releases()->showTag(
+        $release = $GitHub->api('repo')->releases()->tag(
           $this->getConfigParameter('organization'),
           $this->getConfigParameter('repository'),
           $tag

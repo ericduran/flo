@@ -29,7 +29,7 @@ class TagPreRelease extends Command {
     $tag = $input->getArgument('tag');
     $GitHub = $this->getGithub(FALSE, 'repo');
     try {
-      $release = $GitHub->releases()->showTag(
+      $release = $GitHub->releases()->tag(
         $this->getConfigParameter('organization'),
         $this->getConfigParameter('repository'),
         $tag

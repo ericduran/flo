@@ -43,8 +43,8 @@ class Command extends \Symfony\Component\Console\Command\Command {
   /**
    * @return Github\Client
    */
-  public function getGithub($cache = TRUE, $api = NULL, $reset = TRUE) {
-    if ($this->github === NULL || $reset === TRUE) {
+  public function getGithub($cache = TRUE, $api = NULL, $reset = FALSE) {
+    if ($this->github === NULL) {
       if ($cache) {
         $this->github = new Github\Client(
           new Github\HttpClient\CachedHttpClient(array('cache_dir' => '/tmp/github-api-cache'))
@@ -91,7 +91,7 @@ class Command extends \Symfony\Component\Console\Command\Command {
       throw new \Exception("PR must be a number.");
     }
 
-    $github = $this->getGithub(FALSE, 'issue');
+    $github = $this->getGithub(FALSE, 'issue', TRUE);
     $github->labels()->add(
       $this->getConfigParameter('organization'),
       $this->getConfigParameter('repository'),
@@ -143,7 +143,7 @@ class Command extends \Symfony\Component\Console\Command\Command {
     if (!is_numeric($pr_number)) {
       throw new \Exception("PR must be a number.");
     }
-    $github = $this->getGithub(FALSE, 'issue');
+    $github = $this->getGithub(FALSE, 'issue', TRUE);
     $github->comments()->create(
       $this->getConfigParameter('organization'),
       $this->getConfigParameter('repository'),

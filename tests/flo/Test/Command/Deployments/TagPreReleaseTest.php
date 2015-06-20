@@ -55,7 +55,7 @@ class TagPreReleaseTest extends PullRequestTestHelper {
 
     // Now after ALLLLL that set up, lets call our command
     $command_run_script = $this->application->find('tag-pre-release');
-    $command_run_script->github = $this->getMockReleaseslApi(array('id' => 1), 'showTag');
+    $command_run_script->github = $this->getMockReleaseslApi(array('id' => 1), 'tag');
 
     $command_tester = new CommandTester($command_run_script);
     $command_tester->execute(array(
@@ -74,7 +74,7 @@ class TagPreReleaseTest extends PullRequestTestHelper {
 
     // Now after ALLLLL that set up, lets call our command
     $command_run_script = $this->application->find('tag-pre-release');
-    $command_run_script->github = $this->getMockReleaseslApi(array('id' => 1, 'prerelease' => 1), 'showTag');
+    $command_run_script->github = $this->getMockReleaseslApi(array('id' => 1, 'prerelease' => 1), 'tag');
 
     $command_tester = new CommandTester($command_run_script);
     $command_tester->execute(array(

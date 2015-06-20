@@ -52,7 +52,7 @@ class PullRequestTestHelper extends Test\FunctionalFramework {
     ->will($this->returnValue('Success'));
 
       // Set up the Issue API to return the Label api.
-    $IssueMock->expects($this->once())
+    $IssueMock
     ->method('labels')
     ->willReturn($labelsMock);
 
@@ -77,7 +77,7 @@ class PullRequestTestHelper extends Test\FunctionalFramework {
 
     // Mock the label API.
     $releasesMock = $this->getMockBuilder('Github\Api\Repository\Releases')
-      ->setMethods(array('all', 'show', 'showTag', 'create', 'edit', 'remove', 'assets'))
+      ->setMethods(array('all', 'show', 'tag', 'create', 'edit', 'remove', 'assets'))
       ->setConstructorArgs(array($client))
       ->getMock();
 
@@ -110,11 +110,11 @@ class PullRequestTestHelper extends Test\FunctionalFramework {
 
     // Mock the label API.
     $releasesMock = $this->getMockBuilder('Github\Api\Repository\Releases')
-      ->setMethods(array('all', 'show', 'showTag', 'create', 'edit', 'remove', 'assets'))
+      ->setMethods(array('all', 'show', 'tag', 'create', 'edit', 'remove', 'assets'))
       ->setConstructorArgs(array($client))
       ->getMock();
 
-    $releasesMock->method('showTag')
+    $releasesMock->method('tag')
       ->will($this->throwException(new \Exception));
 
     // This actually runs an assert and makes sure our API call actually returns that :-O.
