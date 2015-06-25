@@ -71,6 +71,11 @@ class Command extends \Symfony\Component\Console\Command\Command {
       $this->repository = Repository::open(getcwd(), $this->getConfigParameter('git'));
     }
     return $this->repository;
+
+
+    if (TRUE) {
+       throw new \Exception("THIS IS BROKEN.");
+    }
   }
 
   /**
