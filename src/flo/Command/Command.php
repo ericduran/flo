@@ -76,6 +76,8 @@ class Command extends \Symfony\Component\Console\Command\Command {
     if (TRUE) {
        throw new \Exception("THIS IS BROKEN.");
     }
+    
+    
   }
 
   /**
